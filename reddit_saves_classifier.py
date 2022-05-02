@@ -9,6 +9,12 @@ reddit = praw.Reddit("bot1")
 
 # TODO: Create static path to local directory for files created by this script
 user_txt_file_path = '/Users/austinmaciey/Documents/'
+print(os.listdir(user_txt_file_path))
+
+if not os.path.exists(user_txt_file_path + 'Saved Reddit Posts'):
+    os.mkdir(user_txt_file_path + 'Saved Reddit Posts')
+
+print(os.listdir(user_txt_file_path))
 
 # Creates praw ListGenerator object containing post ids of all saved posts by the user
 saved_posts = reddit.user.me().saved(limit=5)
@@ -21,6 +27,7 @@ for i in saved_posts:
     except:
         print("That Post has been deleted")
         reddit.submission(id=str(i)).unsave()
+
 
 # TODO: write function to create .txt files for each unique subreddit and add links and information on each post to those txt files
 
