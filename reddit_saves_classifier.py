@@ -8,6 +8,7 @@ import praw
 reddit = praw.Reddit("bot1")
 
 # TODO: Create static path to local directory for files created by this script
+user_txt_file_path = '/Users/austinmaciey/Documents/'
 
 # Creates praw ListGenerator object containing post ids of all saved posts by the user
 saved_posts = reddit.user.me().saved(limit=5)
